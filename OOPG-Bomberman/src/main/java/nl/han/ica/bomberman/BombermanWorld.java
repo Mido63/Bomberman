@@ -11,9 +11,8 @@ import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileMap;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
 import nl.han.ica.OOPDProcessingEngineHAN.View.EdgeFollowingViewport;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
-//import nl.han.ica.bomberman.tiles.BoardsTile;
+import nl.han.ica.bomberman.gameobjects.tiles.BoardsTile;
 import nl.han.ica.bomberman.gameobjects.Player;
-import nl.han.ica.waterworld.tiles.BoardsTile;
 import processing.core.PApplet;
 
 /**
@@ -150,7 +149,7 @@ public class BombermanWorld extends GameEngine {
      */
     private void initializeTileMap() {
         /* TILES */
-        Sprite boardsSprite = new Sprite("src/main/java/nl/han/ica/waterworld/media/boards.jpg");
+        Sprite boardsSprite = new Sprite("src/main/java/nl/han/ica/bomberman/media/Images/boards.jpg");
         TileType<BoardsTile> boardTileType = new TileType<>(BoardsTile.class, boardsSprite);
 
         TileType[] tileTypes = { boardTileType };
