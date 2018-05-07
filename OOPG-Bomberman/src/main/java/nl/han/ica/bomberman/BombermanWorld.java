@@ -63,7 +63,7 @@ public class BombermanWorld extends GameEngine {
      */
     private void createViewWithoutViewport(int screenWidth, int screenHeight) {
         View view = new View(screenWidth,screenHeight);
-        view.setBackground(loadImage("src/main/java/nl/han/ica/bomberman/media/images/background.jpg"));
+        view.setBackground(loadImage("src/main/java/nl/han/ica/bomberman/media/Images/background.jpg"));
 
         setView(view);
         size(screenWidth, screenHeight);
@@ -83,7 +83,7 @@ public class BombermanWorld extends GameEngine {
         View view = new View(viewPort, worldWidth,worldHeight);
         setView(view);
         size(screenWidth, screenHeight);
-        view.setBackground(loadImage("src/main/java/nl/han/ica/waterworld/media/background.jpg"));
+        view.setBackground(loadImage("src/main/java/nl/han/ica/bomberman/media/Images/background.jpg"));
     }
 
     /**
