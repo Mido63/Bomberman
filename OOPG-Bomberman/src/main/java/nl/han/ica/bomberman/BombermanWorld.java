@@ -18,19 +18,19 @@ import processing.core.PApplet;
  * @author Ralph Niels
  */
 @SuppressWarnings("serial")
-public class WaterWorld extends GameEngine {
+public class BombermanWorld extends GameEngine {
 
-    private Sound backgroundSound;
-    private Sound bubblePopSound;
-    private TextObject dashboardText;
-    private BubbleSpawner bubbleSpawner;
-    private int bubblesPopped;
-    private IPersistence persistence;
-    private Player player;
+    //private Sound backgroundSound;
+    //private Sound bubblePopSound;
+    //private TextObject dashboardText;
+    //private BubbleSpawner bubbleSpawner;
+    //private int bubblesPopped;
+    //private IPersistence persistence;
+    //private Player player;
 
 
     public static void main(String[] args) {
-        PApplet.main(new String[]{"nl.han.ica.waterworld.WaterWorld"});
+        PApplet.main(new String[]{"nl.han.ica.bomberman.BombermanWorld"});
     }
 
     /**
@@ -63,7 +63,7 @@ public class WaterWorld extends GameEngine {
      */
     private void createViewWithoutViewport(int screenWidth, int screenHeight) {
         View view = new View(screenWidth,screenHeight);
-        view.setBackground(loadImage("src/main/java/nl/han/ica/waterworld/media/background.jpg"));
+        view.setBackground(loadImage("src/main/java/nl/han/ica/bomberman/media/images/background.jpg"));
 
         setView(view);
         size(screenWidth, screenHeight);
@@ -90,9 +90,9 @@ public class WaterWorld extends GameEngine {
      * Initialiseert geluid
      */
     private void initializeSound() {
-        backgroundSound = new Sound(this, "src/main/java/nl/han/ica/waterworld/media/Waterworld.mp3");
+        backgroundSound = new Sound(this, "src/main/java/nl/han/ica/waterworld/media/background-music.mp3");
         backgroundSound.loop(-1);
-        bubblePopSound = new Sound(this, "src/main/java/nl/han/ica/waterworld/media/pop.mp3");
+        bombExplotion = new Sound(this, "src/main/java/nl/han/ica/bomberman/media/explotion.mp3");
     }
 
 
@@ -106,6 +106,7 @@ public class WaterWorld extends GameEngine {
         addGameObject(sf,200,200);
     }
 
+    //TODO: hier moet je bomberfactory komen die de bom toevoegt
     /**
      * Maakt de spawner voor de bellen aan
      */
