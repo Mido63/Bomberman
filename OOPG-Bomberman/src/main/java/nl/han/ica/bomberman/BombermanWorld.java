@@ -107,6 +107,10 @@ public class BombermanWorld extends GameEngine {
     }
 
     //TODO: hier moet je bomberfactory komen die de bom toevoegt
+    
+    public void createBomb() {
+    	
+    }
     /**
      * Maakt de spawner voor de bellen aan
      */
