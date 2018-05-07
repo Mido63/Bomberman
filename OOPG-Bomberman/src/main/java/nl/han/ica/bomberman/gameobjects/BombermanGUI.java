@@ -1,3 +1,7 @@
+package nl.han.ica.bomberman.gameobjects;
+
+
+
 import java.awt.GridLayout;
 
 import javax.swing.ImageIcon;

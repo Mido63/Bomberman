@@ -1,3 +1,5 @@
+package nl.han.ica.bomberman.gameobjects;
+
 import javax.swing.JOptionPane;
 
 /**

@@ -1,3 +1,5 @@
+package nl.han.ica.bomberman.gameobjects;
+
 import java.util.Timer;
 import java.util.TimerTask;
 

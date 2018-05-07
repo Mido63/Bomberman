@@ -12,12 +12,14 @@ import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
 import nl.han.ica.OOPDProcessingEngineHAN.View.EdgeFollowingViewport;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.bomberman.gameobjects.tiles.BoardsTile;
+import nl.han.ica.bomberman.gameobjects.BombermanGUI;
+import nl.han.ica.bomberman.gameobjects.BombermanListener;
 import nl.han.ica.bomberman.gameobjects.Player;
 import processing.core.PApplet;
 
-/**
- * @author Ralph Niels
- */
+///**
+// * @author Ralph Niels
+// */
 @SuppressWarnings("serial")
 public class BombermanWorld extends GameEngine {
 
@@ -101,8 +103,8 @@ public class BombermanWorld extends GameEngine {
      * Maakt de spelobjecten aan
      */
     private void createObjects() {
-    	//player = new Player(this);
-        //addGameObject(player, 100, 100);
+    	player = new Player(this);
+        addGameObject(player, 100, 100);
         //Swordfish sf=new Swordfish(this);
         //addGameObject(sf,200,200);
     }

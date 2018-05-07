@@ -1,10 +1,11 @@
-package nl.han.ica.bomberman;
+package nl.han.ica.bomberman.gameobjects;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.CollidedTile;
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithTiles;
 import nl.han.ica.OOPDProcessingEngineHAN.Exceptions.TileNotFoundException;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
+import nl.han.ica.bomberman.BombermanWorld;
 import nl.han.ica.waterworld.tiles.BoardsTile;
 import processing.core.PVector;
 
@@ -24,7 +25,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
      * @param world Referentie naar de wereld
      */
     public Player(BombermanWorld world) {
-        super(new Sprite("src/main/java/nl/han/ica/waterworld/media/player.jpg"),2);
+        super(new Sprite("src/main/java/nl/han/ica/bomberman/media/Images/player-down.JPG"),2);
         this.world=world;
         setCurrentFrameIndex(1);
         setFriction(0.05f);
