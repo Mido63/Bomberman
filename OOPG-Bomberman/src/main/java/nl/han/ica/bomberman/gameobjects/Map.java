@@ -1,3 +1,5 @@
+package nl.han.ica.bomberman.gameobjects;
+
 import java.io.FileReader;
 import java.util.Scanner;
 

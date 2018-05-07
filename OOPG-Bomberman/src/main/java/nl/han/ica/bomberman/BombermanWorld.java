@@ -11,7 +11,9 @@ import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileMap;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
 import nl.han.ica.OOPDProcessingEngineHAN.View.EdgeFollowingViewport;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
-import nl.han.ica.bomberman.tiles.BoardsTile;
+//import nl.han.ica.bomberman.tiles.BoardsTile;
+import nl.han.ica.bomberman.gameobjects.Player;
+import nl.han.ica.waterworld.tiles.BoardsTile;
 import processing.core.PApplet;
 
 /**
@@ -20,13 +22,13 @@ import processing.core.PApplet;
 @SuppressWarnings("serial")
 public class BombermanWorld extends GameEngine {
 
-    //private Sound backgroundSound;
-    //private Sound bubblePopSound;
+    private Sound backgroundSound;
+    private Sound bombExplotion;
     //private TextObject dashboardText;
     //private BubbleSpawner bubbleSpawner;
     //private int bubblesPopped;
     //private IPersistence persistence;
-    //private Player player;
+    private Player player;
 
 
     public static void main(String[] args) {
@@ -46,10 +48,10 @@ public class BombermanWorld extends GameEngine {
         initializeSound();
         createDashboard(worldWidth, 100);
         initializeTileMap();
-        initializePersistence();
+        //initializePersistence();
 
         createObjects();
-        createBubbleSpawner();
+        //createBubbleSpawner();
 
         createViewWithoutViewport(worldWidth, worldHeight);
         //createViewWithViewport(worldWidth, worldHeight, 800, 800, 1.1f);
@@ -90,9 +92,9 @@ public class BombermanWorld extends GameEngine {
      * Initialiseert geluid
      */
     private void initializeSound() {
-        backgroundSound = new Sound(this, "src/main/java/nl/han/ica/waterworld/media/background-music.mp3");
+        backgroundSound = new Sound(this, "src/main/java/nl/han/ica/bomberman/media/Music/background-music.mp3");
         backgroundSound.loop(-1);
-        bombExplotion = new Sound(this, "src/main/java/nl/han/ica/bomberman/media/explotion.mp3");
+        bombExplotion = new Sound(this, "src/main/java/nl/han/ica/bomberman/media/Music/explotion.mp3");
     }
 
 
@@ -100,10 +102,10 @@ public class BombermanWorld extends GameEngine {
      * Maakt de spelobjecten aan
      */
     private void createObjects() {
-        player = new Player(this);
-        addGameObject(player, 100, 100);
-        Swordfish sf=new Swordfish(this);
-        addGameObject(sf,200,200);
+    	//player = new Player(this);
+        //addGameObject(player, 100, 100);
+        //Swordfish sf=new Swordfish(this);
+        //addGameObject(sf,200,200);
     }
 
     //TODO: hier moet je bomberfactory komen die de bom toevoegt
@@ -114,9 +116,9 @@ public class BombermanWorld extends GameEngine {
     /**
      * Maakt de spawner voor de bellen aan
      */
-    public void createBubbleSpawner() {
-        bubbleSpawner=new BubbleSpawner(this,bubblePopSound,2);
-    }
+//    public void createBubbleSpawner() {
+//        bubbleSpawner=new BubbleSpawner(this,bubblePopSound,2);
+//    }
 
     /**
      * Maakt het dashboard aan
@@ -125,8 +127,8 @@ public class BombermanWorld extends GameEngine {
      */
     private void createDashboard(int dashboardWidth,int dashboardHeight) {
         Dashboard dashboard = new Dashboard(0,0, dashboardWidth, dashboardHeight);
-        dashboardText=new TextObject("");
-        dashboard.addGameObject(dashboardText);
+        //dashboardText=new TextObject("");
+        //dashboard.addGameObject(dashboardText);
         addDashboard(dashboard);
     }
 
@@ -135,13 +137,13 @@ public class BombermanWorld extends GameEngine {
      * en laadt indien mogelijk de eerder opgeslagen
      * waarde
      */
-    private void initializePersistence() {
-        persistence = new FilePersistence("main/java/nl/han/ica/waterworld/media/bubblesPopped.txt");
-        if (persistence.fileExists()) {
-            bubblesPopped = Integer.parseInt(persistence.loadDataString());
-            refreshDasboardText();
-        }
-    }
+//    private void initializePersistence() {
+//        persistence = new FilePersistence("main/java/nl/han/ica/waterworld/media/bubblesPopped.txt");
+//        if (persistence.fileExists()) {
+//            bubblesPopped = Integer.parseInt(persistence.loadDataString());
+//            refreshDasboardText();
+//        }
+//    }
 
     /** 
      * Initialiseert de tilemap
@@ -179,17 +181,17 @@ public class BombermanWorld extends GameEngine {
     /**
      * Vernieuwt het dashboard
      */
-    private void refreshDasboardText() {
-        dashboardText.setText("Bubbles popped: "+bubblesPopped);
-    }
+//    private void refreshDasboardText() {
+//        dashboardText.setText("Bubbles popped: "+bubblesPopped);
+//    }
 
     /**
      * Verhoogt de teller voor het aantal
      * geknapte bellen met 1
      */
-    public void increaseBubblesPopped() {
-        bubblesPopped++;
-        persistence.saveData(Integer.toString(bubblesPopped));
-        refreshDasboardText();
-    }
+//    public void increaseBubblesPopped() {
+//        bubblesPopped++;
+//        persistence.saveData(Integer.toString(bubblesPopped));
+//        refreshDasboardText();
+//    }
 }
