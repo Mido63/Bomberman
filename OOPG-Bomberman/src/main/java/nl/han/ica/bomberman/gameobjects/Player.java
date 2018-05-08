@@ -6,7 +6,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Exceptions.TileNotFoundException;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.bomberman.BombermanWorld;
-import nl.han.ica.waterworld.tiles.BoardsTile;
+import nl.han.ica.bomberman.gameobjects.tiles.BoardsTile;
 import processing.core.PVector;
 
 import java.util.List;
@@ -25,7 +25,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
      * @param world Referentie naar de wereld
      */
     public Player(BombermanWorld world) {
-        super(new Sprite("src/main/java/nl/han/ica/bomberman/media/Images/player-down.JPG"),2);
+        super(new Sprite("src/main/java/nl/han/ica/bomberman/media/Images/player.jpg"), 2);
         this.world=world;
         setCurrentFrameIndex(1);
         setFriction(0.05f);
@@ -73,7 +73,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
         }
     }
 
-
+    //TODO: hier voegen we de bots locaties toe.
     @Override
     public void tileCollisionOccurred(List<CollidedTile> collidedTiles)  {
         PVector vector;
@@ -88,14 +88,39 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
                         e.printStackTrace();
                     }
                 }
+                if(ct.collisionSide == ct.BOTTOM) {
+                	try {
+                		vector = world.getTileMap().getTilePixelLocation(ct.theTile);
+                		setY(vector.y + getHeight());
+                	} catch(TileNotFoundException e) {
+                		e.printStackTrace();
+                	}
+                }
+//                if (ct.collisionSide == ct.RIGHT) {
+//                    try {
+//                        vector = world.getTileMap().getTilePixelLocation(ct.theTile);
+//                        world.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
+//                    } catch (TileNotFoundException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
                 if (ct.collisionSide == ct.RIGHT) {
                     try {
                         vector = world.getTileMap().getTilePixelLocation(ct.theTile);
-                        world.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
+                        setX(vector.x + getWidth());
                     } catch (TileNotFoundException e) {
                         e.printStackTrace();
                     }
                 }
+                if (ct.collisionSide == ct.LEFT) {
+                    try {
+                        vector = world.getTileMap().getTilePixelLocation(ct.theTile);
+                        setX(vector.x - getWidth());
+                    } catch (TileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+                
             }
         }
     }
