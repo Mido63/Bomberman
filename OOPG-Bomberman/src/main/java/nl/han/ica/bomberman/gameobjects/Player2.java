@@ -11,7 +11,7 @@ import processing.core.PVector;
 
 import java.util.List;
 
-public class Player extends AnimatedSpriteObject implements ICollidableWithTiles {
+public class Player2 extends AnimatedSpriteObject implements ICollidableWithTiles {
 
     final int size=25;
     private final BombermanWorld world;
@@ -20,8 +20,8 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
      * Constructor
      * @param world Referentie naar de wereld
      */
-    public Player(BombermanWorld world) {
-        super(new Sprite("src/main/java/nl/han/ica/bomberman/media/Images/player.jpg"), 1);
+    public Player2(BombermanWorld world) {
+        super(new Sprite("src/main/java/nl/han/ica/bomberman/media/Images/computer.JPG"), 1);
         this.world=world;
         setCurrentFrameIndex(0);
         setFriction(0.05f);
@@ -50,21 +50,21 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
     @Override
     public void keyPressed(int keyCode, char key) {
         final int speed = 5;
-        if (keyCode == world.LEFT) {
+        if (key == 'a') {
             setDirectionSpeed(270, speed);
             setCurrentFrameIndex(0);
         }
-        if (keyCode == world.UP) {
+        if (key == 'w') {
             setDirectionSpeed(0, speed);
         }
-        if (keyCode == world.RIGHT) {
+        if (key == 'd') {
             setDirectionSpeed(90, speed);
             setCurrentFrameIndex(0);
         }
-        if (keyCode == world.DOWN) {
+        if (key == 's') {
             setDirectionSpeed(180, speed);
         }
-        if (key == ' ') {
+        if (key == '0') {
             System.out.println("Spatie!");
             world.createBom();
         }

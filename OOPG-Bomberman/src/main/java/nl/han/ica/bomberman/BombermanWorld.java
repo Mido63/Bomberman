@@ -1,6 +1,8 @@
 package nl.han.ica.bomberman;
 
 import com.sun.prism.image.ViewPort;
+
+import nl.han.ica.OOPDProcessingEngineHAN.Alarm.Alarm;
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
@@ -17,8 +19,9 @@ import nl.han.ica.bomberman.gameobjects.BombermanGUI;
 import nl.han.ica.bomberman.gameobjects.BombermanListener;
 import nl.han.ica.bomberman.gameobjects.Map;
 import nl.han.ica.bomberman.gameobjects.Player;
+import nl.han.ica.bomberman.gameobjects.Player2;
 import processing.core.PApplet;
-
+import java.util.Timer;
 
 @SuppressWarnings("serial")
 public class BombermanWorld extends GameEngine {
@@ -30,8 +33,11 @@ public class BombermanWorld extends GameEngine {
     //private int bubblesPopped;
     //private IPersistence persistence;
     //private Map map;
-    //private Bomb bomb;
+    private Bomb bomb;
     private Player player;
+    private Player2 player2;
+    private boolean bombCreated = false;
+    Alarm timer;
 
 
     public static void main(String[] args) {
@@ -73,6 +79,20 @@ public class BombermanWorld extends GameEngine {
         setView(view);
         size(screenWidth, screenHeight);
     }
+    
+    private void createTimer() {
+    	timer.start();
+    	//return timer.getSeconds(); 
+    }
+    
+    private boolean isTimerDone() {
+    	if(timer.getSeconds() == 1500) {
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
+    }
 
     /**
      * Creeërt de view met viewport
@@ -107,9 +127,46 @@ public class BombermanWorld extends GameEngine {
     private void createObjects() {
     	player = new Player(this);
         addGameObject(player, 100, 100);
+        player2 = new Player2(this);
+        addGameObject(player2, 400, 400);
         //Swordfish sf=new Swordfish(this);
         //addGameObject(sf,200,200);
     }
+    
+    public void createBom() {
+    	bombCreated = true;
+    	if(bombCreated) {
+    		bomb = new Bomb(bomb);
+        	addGameObject(bomb, 100, 100);
+        	update();
+        	bombCreated = false;
+//        	createTimer();
+//        	
+//        	if(isTimerDone()) {
+//        		deleteGameObject(bomb);
+//        	}
+    	}
+    	
+    	
+//    	bombCreated = true;
+//    	if(bombCreated) {
+//    		update();
+//    		deleteGameObject(bomb);
+//    		bombCreated = false;
+//    	}
+//    	timer = new BombTimer(bomb);
+//    	try {
+//			bomb.explode();
+//			deleteGameObject(bomb);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+    	
+    	
+    }
+    
+    
 
     //TODO: hier moet je bomberfactory komen die de bom toevoegt
     /**
