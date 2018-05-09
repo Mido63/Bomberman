@@ -12,14 +12,14 @@ import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
 import nl.han.ica.OOPDProcessingEngineHAN.View.EdgeFollowingViewport;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.bomberman.gameobjects.tiles.BoardsTile;
+import nl.han.ica.bomberman.gameobjects.Bomb;
 import nl.han.ica.bomberman.gameobjects.BombermanGUI;
 import nl.han.ica.bomberman.gameobjects.BombermanListener;
+import nl.han.ica.bomberman.gameobjects.Map;
 import nl.han.ica.bomberman.gameobjects.Player;
 import processing.core.PApplet;
 
-///**
-// * @author Ralph Niels
-// */
+
 @SuppressWarnings("serial")
 public class BombermanWorld extends GameEngine {
 
@@ -29,6 +29,8 @@ public class BombermanWorld extends GameEngine {
     //private BubbleSpawner bubbleSpawner;
     //private int bubblesPopped;
     //private IPersistence persistence;
+    //private Map map;
+    //private Bomb bomb;
     private Player player;
 
 
@@ -46,7 +48,7 @@ public class BombermanWorld extends GameEngine {
         int worldWidth=1204;
         int worldHeight=677;
 
-        initializeSound();
+        //initializeSound();
         createDashboard(worldWidth, 100);
         initializeTileMap();
         //initializePersistence();
@@ -92,11 +94,11 @@ public class BombermanWorld extends GameEngine {
     /**
      * Initialiseert geluid
      */
-    private void initializeSound() {
-        backgroundSound = new Sound(this, "src/main/java/nl/han/ica/bomberman/media/Music/background-music.mp3");
-        backgroundSound.loop(-1);
-        bombExplotion = new Sound(this, "src/main/java/nl/han/ica/bomberman/media/Music/explotion.mp3");
-    }
+//    private void initializeSound() {
+//        backgroundSound = new Sound(this, "src/main/java/nl/han/ica/bomberman/media/Music/background-music.mp3");
+//        backgroundSound.loop(-1);
+//        bombExplotion = new Sound(this, "src/main/java/nl/han/ica/bomberman/media/Music/explotion.mp3");
+//    }
 
 
     /**
@@ -110,10 +112,6 @@ public class BombermanWorld extends GameEngine {
     }
 
     //TODO: hier moet je bomberfactory komen die de bom toevoegt
-    
-    public void createBomb() {
-    	
-    }
     /**
      * Maakt de spawner voor de bellen aan
      */
@@ -157,20 +155,6 @@ public class BombermanWorld extends GameEngine {
         TileType[] tileTypes = { boardTileType };
         int tileSize=40;
         int tilesMap[][]={
-//                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-//                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-//                {-1, 0, 0,-1,-1, 0, 0, 0,-1,-1},
-//                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-//                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-//                {-1, 0, 0,-1,-1, 0, 0, 0,-1,-1},
-//                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-//                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-//                {-1, 0, 0,-1,-1, 0, 0, 0,-1,-1},
-//                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-//                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-//                {-1, 0, 0,-1,-1, 0, 0, 0,-1,-1},
-//                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-//                {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}
         		{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
         		{1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
         		{1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
@@ -186,7 +170,7 @@ public class BombermanWorld extends GameEngine {
         		{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
         };
         tileMap = new TileMap(tileSize, tileTypes, tilesMap);
-    }
+	}
 
     @Override
     public void update() {

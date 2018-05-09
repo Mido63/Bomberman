@@ -128,7 +128,7 @@ public abstract class GameEngine extends PApplet {
      * @param x
      * @param y
      */
-    public void addGameObject(GameObject gameObject, float x, float y) {
+    public void addGameObject(GameObject gameObject, int x, int y) {
     	addGameObject(gameObject);
     	
         gameObject.setX(x);

@@ -11,10 +11,6 @@ import processing.core.PVector;
 
 import java.util.List;
 
-/**
- * @author Ralph Niels
- * De spelerklasse (het paarse visje)
- */
 public class Player extends AnimatedSpriteObject implements ICollidableWithTiles {
 
     final int size=25;
@@ -25,9 +21,9 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
      * @param world Referentie naar de wereld
      */
     public Player(BombermanWorld world) {
-        super(new Sprite("src/main/java/nl/han/ica/bomberman/media/Images/player.jpg"), 2);
+        super(new Sprite("src/main/java/nl/han/ica/bomberman/media/Images/player.jpg"), 1);
         this.world=world;
-        setCurrentFrameIndex(1);
+        setCurrentFrameIndex(0);
         setFriction(0.05f);
     }
 
@@ -63,13 +59,13 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
         }
         if (keyCode == world.RIGHT) {
             setDirectionSpeed(90, speed);
-            setCurrentFrameIndex(1);
+            setCurrentFrameIndex(0);
         }
         if (keyCode == world.DOWN) {
             setDirectionSpeed(180, speed);
         }
         if (key == ' ') {
-            System.out.println("Spatie!");
+            //bomb.makeNew();
         }
     }
 
