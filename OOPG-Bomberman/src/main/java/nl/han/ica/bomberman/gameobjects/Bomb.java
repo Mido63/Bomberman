@@ -21,7 +21,8 @@ public class Bomb extends AnimatedSpriteObject implements ICollidableWithTiles
 	private boolean exploding; /** If the bomb is exploding; prevents it from exploding multiple times */
 	private Bomb bomb;
 	final int size=25;
-	
+	long starttime;
+	long now = System.currentTimeMillis();  
 	/**
 	 * 
 	 * @param r The row the player is on
@@ -53,8 +54,9 @@ public class Bomb extends AnimatedSpriteObject implements ICollidableWithTiles
         //startTime = 1500;
         setCurrentFrameIndex(0);
         setFriction(0.05f);
+    	System.out.println((long)((now - starttime) / 1000));
 	}
-	
+
 	/**
 	 * Checks to see how long the bomb hasn't exploded for
 	 * @return What state the bomb is in (0 = none, 1 = exploded, 2 = exploding, 3 = finished exploding
