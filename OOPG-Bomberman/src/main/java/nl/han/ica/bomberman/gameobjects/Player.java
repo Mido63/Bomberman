@@ -65,7 +65,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
             setDirectionSpeed(180, speed);
         }
         if (key == ' ') {
-            //bomb.makeNew();
+            System.out.println("Spatie!");
         }
     }
 
