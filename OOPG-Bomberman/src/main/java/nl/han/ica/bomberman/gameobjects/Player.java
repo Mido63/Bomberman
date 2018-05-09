@@ -70,6 +70,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
         }
         if (key == ' ') {
             System.out.println("Spatie!");
+            
         }
     }
 
