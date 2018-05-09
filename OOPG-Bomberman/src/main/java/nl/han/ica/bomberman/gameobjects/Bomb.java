@@ -1,44 +1,31 @@
 package nl.han.ica.bomberman.gameobjects;
 
-import java.util.List;
-
 import javax.swing.JOptionPane;
-
-import nl.han.ica.OOPDProcessingEngineHAN.Collision.CollidedTile;
-import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithTiles;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 /**
  * Bomb class
  * Keep track of bomb information
  */
-public class Bomb extends AnimatedSpriteObject implements ICollidableWithTiles
+public class Bomb
 {
 	private long startTime; /** When the bomb was dropped */
 	private int row; /** What row the bomb is in on the board */
 	private int column; /** What column the bomb is in on the board */
 	private boolean exploding; /** If the bomb is exploding; prevents it from exploding multiple times */
-	private Bomb bomb;
-	final int size=25;
+	
 	/**
 	 * 
 	 * @param r The row the player is on
 	 * @param c The column the player is on
 	 * @param time What time the bomb was dropped
 	 */
-	public Bomb( Bomb bomb ) //int r, int c, long time
+	public Bomb( int r, int c, long time )
 	{
 		/** 1. Initialize all the variables */
-//		row = r;
-//		column = c;
-//		startTime = time;
-//		exploding = false;
-		super(new Sprite("src/main/java/nl/han/ica/bomberman/media/Images/bomb.jpg"), 1);
-        this.bomb=bomb;
-        startTime = 1500;
-        setCurrentFrameIndex(0);
-        setFriction(0.05f);
+		row = r;
+		column = c;
+		startTime = time;
+		exploding = false;
 	}
 	
 	/**
@@ -187,41 +174,4 @@ public class Bomb extends AnimatedSpriteObject implements ICollidableWithTiles
 	public boolean isExploding() {
 		return exploding;
 	}
-	
-	@Override
-    public void keyPressed(int keyCode, char key) {
-        final int speed = 5;
-        if (key == ' ') {
-            System.out.println("Spatie!");
-            //bomb = new Bomb((int)getX(), (int)getY(), 1500);
-            setCurrentFrameIndex(0);
-        }
-    }
-
-	@Override
-	public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update() {
-        if (getX()<=0) {
-            setxSpeed(0);
-            setX(0);
-        }
-        if (getY()<=0) {
-            setySpeed(0);
-            setY(0);
-        }
-        if (getX()>=bomb.getWidth()-size) {
-            setxSpeed(0);
-            setX(bomb.getWidth() - size);
-        }
-        if (getY()>=bomb.getHeight()-size) {
-            setySpeed(0);
-            setY(bomb.getHeight() - size);
-        }
-
-    }
 }

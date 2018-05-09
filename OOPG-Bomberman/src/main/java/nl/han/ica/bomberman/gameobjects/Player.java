@@ -15,7 +15,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 
     final int size=25;
     private final BombermanWorld world;
-    private Bomb bomb;
 
     /**
      * Constructor
@@ -27,7 +26,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
         setCurrentFrameIndex(0);
         setFriction(0.05f);
     }
-    
+
     @Override
     public void update() {
         if (getX()<=0) {
@@ -67,8 +66,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
         }
         if (key == ' ') {
             System.out.println("Spatie!");
-            //bomb = new Bomb((int)getX(), (int)getY(), 1500);
-            world.createBom();
         }
     }
 

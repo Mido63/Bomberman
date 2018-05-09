@@ -1,7 +1,5 @@
 package nl.han.ica.bomberman;
 
-import java.util.concurrent.TimeUnit;
-
 import com.sun.prism.image.ViewPort;
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
@@ -15,14 +13,11 @@ import nl.han.ica.OOPDProcessingEngineHAN.View.EdgeFollowingViewport;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.bomberman.gameobjects.tiles.BoardsTile;
 import nl.han.ica.bomberman.gameobjects.Bomb;
-import nl.han.ica.bomberman.gameobjects.BombTimer;
-import nl.han.ica.bomberman.gameobjects.BombTimer.Task;
 import nl.han.ica.bomberman.gameobjects.BombermanGUI;
 import nl.han.ica.bomberman.gameobjects.BombermanListener;
 import nl.han.ica.bomberman.gameobjects.Map;
 import nl.han.ica.bomberman.gameobjects.Player;
 import processing.core.PApplet;
-import processing.event.KeyEvent;
 
 
 @SuppressWarnings("serial")
@@ -30,15 +25,12 @@ public class BombermanWorld extends GameEngine {
 
     private Sound backgroundSound;
     private Sound bombExplotion;
-    private BombTimer timer;
-    private Task task;
-    private boolean bombCreated = false;
     //private TextObject dashboardText;
     //private BubbleSpawner bubbleSpawner;
     //private int bubblesPopped;
     //private IPersistence persistence;
     //private Map map;
-    private Bomb bomb;
+    //private Bomb bomb;
     private Player player;
 
 
@@ -112,34 +104,11 @@ public class BombermanWorld extends GameEngine {
     /**
      * Maakt de spelobjecten aan
      */
-    public void createObjects() {
+    private void createObjects() {
     	player = new Player(this);
         addGameObject(player, 100, 100);
-        
         //Swordfish sf=new Swordfish(this);
         //addGameObject(sf,200,200);
-    }
-    
-    public void createBom() {
-    	bomb = new Bomb(bomb);
-    	addGameObject(bomb, 100, 100);
-    	update();
-//    	bombCreated = true;
-//    	if(bombCreated) {
-//    		update();
-//    		deleteGameObject(bomb);
-//    		bombCreated = false;
-//    	}
-//    	timer = new BombTimer(bomb);
-//    	try {
-//			bomb.explode();
-//			deleteGameObject(bomb);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-    	
-    	
     }
 
     //TODO: hier moet je bomberfactory komen die de bom toevoegt
@@ -161,8 +130,6 @@ public class BombermanWorld extends GameEngine {
         //dashboard.addGameObject(dashboardText);
         addDashboard(dashboard);
     }
-    
-    
 
     /**
      * Initialiseert de opslag van de bellenteller
