@@ -15,13 +15,13 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
  */
 public class Bomb extends AnimatedSpriteObject implements ICollidableWithTiles
 {
-	private long startTime; /** When the bomb was dropped */
+	private static final long starttime = System.currentTimeMillis();
+	private static long startTime = System.currentTimeMillis(); /** When the bomb was dropped */
 	private int row; /** What row the bomb is in on the board */
 	private int column; /** What column the bomb is in on the board */
 	private boolean exploding; /** If the bomb is exploding; prevents it from exploding multiple times */
 	private Bomb bomb;
 	final int size=25;
-	long starttime;
 	long now = System.currentTimeMillis();  
 	/**
 	 * 
