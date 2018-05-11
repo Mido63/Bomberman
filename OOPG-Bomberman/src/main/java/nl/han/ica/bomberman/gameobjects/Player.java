@@ -5,7 +5,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithTiles;
 import nl.han.ica.OOPDProcessingEngineHAN.Exceptions.TileNotFoundException;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
-import nl.han.ica.bomberman.BombermanWorld;
+import nl.han.ica.bomberman.Bomberman;
 import nl.han.ica.bomberman.gameobjects.tiles.BoardsTile;
 import processing.core.PVector;
 
@@ -14,13 +14,13 @@ import java.util.List;
 public class Player extends AnimatedSpriteObject implements ICollidableWithTiles {
 
     final int size=25;
-    private final BombermanWorld world;
+    private final Bomberman world;
 
     /**
      * Constructor
      * @param world Referentie naar de wereld
      */
-    public Player(BombermanWorld world) {
+    public Player(Bomberman world) {
         super(new Sprite("src/main/java/nl/han/ica/bomberman/media/Images/player.jpg"), 1);
         this.world=world;
         setCurrentFrameIndex(0);
@@ -66,7 +66,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
         }
         if (key == ' ') {
             System.out.println("Spatie!");
-            world.createBom();
+            //world.createBom();
         }
     }
 
