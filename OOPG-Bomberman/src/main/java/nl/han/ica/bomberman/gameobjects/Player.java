@@ -45,6 +45,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
             setySpeed(0);
             setY(world.getHeight() - size);
         }
+        
 
     }
     @Override
@@ -93,14 +94,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
                 		e.printStackTrace();
                 	}
                 }
-//                if (ct.collisionSide == ct.RIGHT) {
-//                    try {
-//                        vector = world.getTileMap().getTilePixelLocation(ct.theTile);
-//                        world.getTileMap().setTile((int) vector.x / 50, (int) vector.y / 50, -1);
-//                    } catch (TileNotFoundException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
                 if (ct.collisionSide == ct.RIGHT) {
                     try {
                         vector = world.getTileMap().getTilePixelLocation(ct.theTile);

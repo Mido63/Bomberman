@@ -3,8 +3,6 @@ package nl.han.ica.bomberman.gameobjects;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import javax.swing.JOptionPane;
-
 public class BombTimer extends Timer
 {
 	public Bomb bombs;

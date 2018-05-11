@@ -1,42 +1,24 @@
 package nl.han.ica.bomberman;
 
-import com.sun.prism.image.ViewPort;
-
 import nl.han.ica.OOPDProcessingEngineHAN.Alarm.Alarm;
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
-import nl.han.ica.OOPDProcessingEngineHAN.Persistence.FilePersistence;
-import nl.han.ica.OOPDProcessingEngineHAN.Persistence.IPersistence;
-import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileMap;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
-import nl.han.ica.OOPDProcessingEngineHAN.View.EdgeFollowingViewport;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.bomberman.gameobjects.tiles.BoardsTile;
 import nl.han.ica.bomberman.gameobjects.tiles.Kist;
 import nl.han.ica.bomberman.gameobjects.Bomb;
-import nl.han.ica.bomberman.gameobjects.BombermanGUI;
-import nl.han.ica.bomberman.gameobjects.BombermanListener;
-import nl.han.ica.bomberman.gameobjects.Map;
 import nl.han.ica.bomberman.gameobjects.Player;
 import nl.han.ica.bomberman.gameobjects.Player2;
 import processing.core.PApplet;
-
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Timer;
 
 @SuppressWarnings("serial")
 public class BombermanWorld extends GameEngine {
 
-    private Sound backgroundSound;
-    private Sound bombExplotion;
-    //private TextObject dashboardText;
-    //private BubbleSpawner bubbleSpawner;
-    //private int bubblesPopped;
-    //private IPersistence persistence;
-    //private Map map;
     private Bomb bomb;
     private Player player;
     private Player2 player2;
@@ -61,13 +43,10 @@ public class BombermanWorld extends GameEngine {
         //initializeSound();
         createDashboard(worldWidth, 100);
         initializeTileMap();
-        //initializePersistence();
 
         createObjects();
-        //createBubbleSpawner();
 
         createViewWithoutViewport(worldWidth, worldHeight);
-        //createViewWithViewport(worldWidth, worldHeight, 800, 800, 1.1f);
 
     }
 
@@ -83,38 +62,6 @@ public class BombermanWorld extends GameEngine {
         setView(view);
         size(screenWidth, screenHeight);
     }
-    
-    private void createTimer() {
-    	timer.start();
-    	//return timer.getSeconds(); 
-    }
-    
-    private boolean isTimerDone() {
-    	if(timer.getSeconds() == 1500) {
-    		return true;
-    	}
-    	else {
-    		return false;
-    	}
-    }
-
-    /**
-     * Creeërt de view met viewport
-     * @param worldWidth Totale breedte van de wereld
-     * @param worldHeight Totale hoogte van de wereld
-     * @param screenWidth Breedte van het scherm
-     * @param screenHeight Hoogte van het scherm
-     * @param zoomFactor Factor waarmee wordt ingezoomd
-     */
-    private void createViewWithViewport(int worldWidth,int worldHeight,int screenWidth,int screenHeight,float zoomFactor) {
-        EdgeFollowingViewport viewPort = new EdgeFollowingViewport(player, (int)Math.ceil(screenWidth/zoomFactor),(int)Math.ceil(screenHeight/zoomFactor),0,0);
-        viewPort.setTolerance(50, 50, 50, 50);
-        View view = new View(viewPort, worldWidth,worldHeight);
-        setView(view);
-        size(screenWidth, screenHeight);
-        view.setBackground(loadImage("src/main/java/nl/han/ica/bomberman/media/Images/background-Custom.jpg"));
-    }
-
     /**
      * Initialiseert geluid
      */
@@ -133,8 +80,6 @@ public class BombermanWorld extends GameEngine {
         addGameObject(player, 100, 100);
         player2 = new Player2(this);
         addGameObject(player2, 400, 400);
-        //Swordfish sf=new Swordfish(this);
-        //addGameObject(sf,200,200);
     }
     
     public void createBom() {
@@ -143,42 +88,9 @@ public class BombermanWorld extends GameEngine {
     		bomb = new Bomb(bomb);
         	addGameObject(bomb, 100, 100);
         	update();
-        	bombCreated = false;
-//        	createTimer();
-//        	
-//        	if(isTimerDone()) {
-//        		deleteGameObject(bomb);
-//        	}
-    	}
-    	
-    	
-//    	bombCreated = true;
-//    	if(bombCreated) {
-//    		update();
-//    		deleteGameObject(bomb);
-//    		bombCreated = false;
-//    	}
-//    	timer = new BombTimer(bomb);
-//    	try {
-//			bomb.explode();
-//			deleteGameObject(bomb);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-    	
-    	
+        	bombCreated = false;	
+    	}	
     }
-    
-    
-
-    //TODO: hier moet je bomberfactory komen die de bom toevoegt
-    /**
-     * Maakt de spawner voor de bellen aan
-     */
-//    public void createBubbleSpawner() {
-//        bubbleSpawner=new BubbleSpawner(this,bubblePopSound,2);
-//    }
 
     /**
      * Maakt het dashboard aan
@@ -187,24 +99,8 @@ public class BombermanWorld extends GameEngine {
      */
     private void createDashboard(int dashboardWidth,int dashboardHeight) {
         Dashboard dashboard = new Dashboard(0,0, dashboardWidth, dashboardHeight);
-        //dashboardText=new TextObject("");
-        //dashboard.addGameObject(dashboardText);
         addDashboard(dashboard);
     }
-
-    /**
-     * Initialiseert de opslag van de bellenteller
-     * en laadt indien mogelijk de eerder opgeslagen
-     * waarde
-     */
-//    private void initializePersistence() {
-//        persistence = new FilePersistence("main/java/nl/han/ica/waterworld/media/bubblesPopped.txt");
-//        if (persistence.fileExists()) {
-//            bubblesPopped = Integer.parseInt(persistence.loadDataString());
-//            refreshDasboardText();
-//        }
-//    }
-
     /** 
      * Initialiseert de tilemap
      */
@@ -228,7 +124,7 @@ public class BombermanWorld extends GameEngine {
         int tilesMap[][]={
         		  { WALL, WALL	    , WALL	    ,  WALL	    , WALL	    , WALL      , WALL	    , WALL      , WALL	    , WALL      , WALL      , WALL      , WALL      , WALL      , WALL},
                   { WALL, -1  	    , -1	    , n.get(0)  , n.get(1)  , n.get(2)  , n.get(3)  , n.get(4)  , n.get(5)  , n.get(6)  , n.get(7)  , n.get(8)  , n.get(9)  , n.get(10) , WALL},
-                  { WALL, -1  	    , WALL	    , n.get(11) , WALL	    , n.get(12) , WALL      , n.get(13) , WALL	    , n.get(14) , WALL		, n.get(15) , WALL      , n.get(16) , WALL},
+                  { WALL, -1  	    , -1	    , n.get(11) , WALL	    , n.get(12) , WALL      , n.get(13) , WALL	    , n.get(14) , WALL		, n.get(15) , WALL      , n.get(16) , WALL},
                   { WALL, n.get(17) , n.get(18) , n.get(19) , n.get(20) , n.get(21) , n.get(22) , n.get(23) , n.get(24) , n.get(25) , n.get(26) , n.get(27) , n.get(28) , n.get(29) , WALL},
                   { WALL, n.get(30) , WALL	    , n.get(31) , WALL      , n.get(32) , WALL	    , n.get(33) , WALL	    , n.get(34) , WALL		, n.get(35) , WALL      , n.get(36) , WALL},
                   { WALL, n.get(37) , n.get(38) , n.get(39) , n.get(40) , n.get(41) , n.get(42) , n.get(43) , n.get(44) , n.get(45) , n.get(46)	, n.get(47) , n.get(48) , n.get(49) , WALL},
@@ -249,21 +145,4 @@ public class BombermanWorld extends GameEngine {
     @Override
     public void update() {
     }
-
-    /**
-     * Vernieuwt het dashboard
-     */
-//    private void refreshDasboardText() {
-//        dashboardText.setText("Bubbles popped: "+bubblesPopped);
-//    }
-
-    /**
-     * Verhoogt de teller voor het aantal
-     * geknapte bellen met 1
-     */
-//    public void increaseBubblesPopped() {
-//        bubblesPopped++;
-//        persistence.saveData(Integer.toString(bubblesPopped));
-//        refreshDasboardText();
-//    }
 }

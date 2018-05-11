@@ -22,39 +22,18 @@ public class Bomb extends AnimatedSpriteObject implements ICollidableWithTiles
 	private boolean exploding; /** If the bomb is exploding; prevents it from exploding multiple times */
 	private Bomb bomb;
 	final int size=25;
-	long now = System.currentTimeMillis();  
 	/**
 	 * 
 	 * @param r The row the player is on
 	 * @param c The column the player is on
 	 * @param time What time the bomb was dropped
 	 */
-//	public Bomb( int r, int c, long time )
-//	{
-//		/** 1. Initialize all the variables */
-//		row = r;
-//		column = c;
-//		startTime = time;
-//		exploding = false;
-//	}
-//	
 	public Bomb( Bomb bomb ) //int r, int c, long time
 	{
-		/** 1. Initialize all the variables */
-//		row = r;
-//		column = c;
-//		startTime = time;
-//		exploding = false;
-//		row = r;
-//		column = c;
-//		startTime = time;
-//		exploding = false;
 		super(new Sprite("src/main/java/nl/han/ica/bomberman/media/Images/bomb.jpg"), 1);
         this.bomb=bomb;
-        //startTime = 1500;
         setCurrentFrameIndex(0);
-        setFriction(0.05f);
-    	System.out.println((long)((now - starttime) / 1000));
+        setFriction(0.05f);	
 	}
 
 	/**
@@ -71,7 +50,6 @@ public class Bomb extends AnimatedSpriteObject implements ICollidableWithTiles
 		 */
 		long time;
 		int state;
-		
 		if( exploding )
 		{
 			//How long the explosion graphic stays on the screen
