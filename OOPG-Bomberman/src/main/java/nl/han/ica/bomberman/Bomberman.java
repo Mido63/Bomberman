@@ -21,6 +21,7 @@ import nl.han.ica.bomberman.gameobjects.tiles.BlankTile;
 //import nl.han.ica.bomberman.gameobjects.BombermanListener;
 //import nl.han.ica.bomberman.gameobjects.Map;
 import nl.han.ica.bomberman.gameobjects.Player;
+import nl.han.ica.bomberman.gameobjects.Player2;
 import processing.core.PApplet;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class Bomberman extends GameEngine {
     private Sound bombExplotion;
     //private Bomb bomb;
     private Player player;
-    private Player player2;
+    private Player2 player2;
     private boolean bombCreated = false;
     //Alarm timer;
 
@@ -127,7 +128,7 @@ public class Bomberman extends GameEngine {
     private void createObjects() {
     	player = new Player(this);
         addGameObject(player, 100, 100);
-        player2 = new Player(this);
+        player2 = new Player2(this);
         addGameObject(player2, 400, 400);
     }
     
