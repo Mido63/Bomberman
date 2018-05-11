@@ -1,38 +1,39 @@
 package nl.han.ica.bomberman;
 
-import com.sun.prism.image.ViewPort;
-
 import nl.han.ica.OOPDProcessingEngineHAN.Alarm.Alarm;
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
-import nl.han.ica.OOPDProcessingEngineHAN.Persistence.FilePersistence;
-import nl.han.ica.OOPDProcessingEngineHAN.Persistence.IPersistence;
-import nl.han.ica.OOPDProcessingEngineHAN.Sound.Sound;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileMap;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
-import nl.han.ica.OOPDProcessingEngineHAN.View.EdgeFollowingViewport;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.bomberman.gameobjects.tiles.BoardsTile;
+<<<<<<< HEAD:OOPG-Bomberman/src/main/java/nl/han/ica/bomberman/Bomberman.java
 import nl.han.ica.bomberman.gameobjects.tiles.CrateTile;
 import nl.han.ica.bomberman.gameobjects.tiles.BlankTile;
 //import nl.han.ica.bomberman.gameobjects.Bomb;
 //import nl.han.ica.bomberman.gameobjects.BombermanGUI;
 //import nl.han.ica.bomberman.gameobjects.BombermanListener;
 //import nl.han.ica.bomberman.gameobjects.Map;
+=======
+import nl.han.ica.bomberman.gameobjects.tiles.Kist;
+import nl.han.ica.bomberman.gameobjects.Bomb;
+>>>>>>> 6dd0b88ad4facfcab16202a3c7a0595510ff65df:OOPG-Bomberman/src/main/java/nl/han/ica/bomberman/BombermanWorld.java
 import nl.han.ica.bomberman.gameobjects.Player;
 import processing.core.PApplet;
-
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Timer;
 
 @SuppressWarnings("serial")
 public class Bomberman extends GameEngine {
 
+<<<<<<< HEAD:OOPG-Bomberman/src/main/java/nl/han/ica/bomberman/Bomberman.java
     private Sound backgroundSound;
     private Sound bombExplotion;
     //private Bomb bomb;
+=======
+    private Bomb bomb;
+>>>>>>> 6dd0b88ad4facfcab16202a3c7a0595510ff65df:OOPG-Bomberman/src/main/java/nl/han/ica/bomberman/BombermanWorld.java
     private Player player;
     private Player player2;
     private boolean bombCreated = false;
@@ -56,13 +57,10 @@ public class Bomberman extends GameEngine {
         initializeSound();
         createDashboard(worldWidth, 100);
         initializeTileMap();
-        //initializePersistence();
 
         createObjects();
-        //createBubbleSpawner();
 
         createViewWithoutViewport(worldWidth, worldHeight);
-        //createViewWithViewport(worldWidth, worldHeight, 800, 800, 1.1f);
 
     }
 
@@ -79,6 +77,7 @@ public class Bomberman extends GameEngine {
         setView(view);
         size(screenWidth, screenHeight);
     }
+<<<<<<< HEAD:OOPG-Bomberman/src/main/java/nl/han/ica/bomberman/Bomberman.java
     
 //    private void createTimer() {
 //    	timer.start();
@@ -111,6 +110,8 @@ public class Bomberman extends GameEngine {
         view.setBackground(loadImage("src/main/java/nl/han/ica/bomberman/media/Images/background-Custom.jpg"));
     }
 
+=======
+>>>>>>> 6dd0b88ad4facfcab16202a3c7a0595510ff65df:OOPG-Bomberman/src/main/java/nl/han/ica/bomberman/BombermanWorld.java
     /**
      * Initialiseert geluid
      */
@@ -131,6 +132,7 @@ public class Bomberman extends GameEngine {
         addGameObject(player2, 400, 400);
     }
     
+<<<<<<< HEAD:OOPG-Bomberman/src/main/java/nl/han/ica/bomberman/Bomberman.java
 //    public void createBom() {
 //    	bombCreated = true;
 //    	if(bombCreated) {
@@ -173,6 +175,17 @@ public class Bomberman extends GameEngine {
 //    public void createBubbleSpawner() {
 //        bubbleSpawner=new BubbleSpawner(this,bubblePopSound,2);
 //    }
+=======
+    public void createBom() {
+    	bombCreated = true;
+    	if(bombCreated) {
+    		bomb = new Bomb(bomb);
+        	addGameObject(bomb, 100, 100);
+        	update();
+        	bombCreated = false;	
+    	}	
+    }
+>>>>>>> 6dd0b88ad4facfcab16202a3c7a0595510ff65df:OOPG-Bomberman/src/main/java/nl/han/ica/bomberman/BombermanWorld.java
 
     /**
      * Maakt het dashboard aan
@@ -181,11 +194,12 @@ public class Bomberman extends GameEngine {
      */
     private void createDashboard(int dashboardWidth,int dashboardHeight) {
         Dashboard dashboard = new Dashboard(0,0, dashboardWidth, dashboardHeight);
-        //dashboardText=new TextObject("");
-        //dashboard.addGameObject(dashboardText);
         addDashboard(dashboard);
     }
+<<<<<<< HEAD:OOPG-Bomberman/src/main/java/nl/han/ica/bomberman/Bomberman.java
 
+=======
+>>>>>>> 6dd0b88ad4facfcab16202a3c7a0595510ff65df:OOPG-Bomberman/src/main/java/nl/han/ica/bomberman/BombermanWorld.java
     /** 
      * Initialiseert de tilemap
      */
@@ -212,7 +226,7 @@ public class Bomberman extends GameEngine {
         int tilesMap[][]={
         		  { WALL, WALL	    , WALL	    ,  WALL	    , WALL	    , WALL      , WALL	    , WALL      , WALL	    , WALL      , WALL      , WALL      , WALL      , WALL      , WALL},
                   { WALL, -1  	    , -1	    , n.get(0)  , n.get(1)  , n.get(2)  , n.get(3)  , n.get(4)  , n.get(5)  , n.get(6)  , n.get(7)  , n.get(8)  , n.get(9)  , n.get(10) , WALL},
-                  { WALL, -1  	    , WALL	    , n.get(11) , WALL	    , n.get(12) , WALL      , n.get(13) , WALL	    , n.get(14) , WALL		, n.get(15) , WALL      , n.get(16) , WALL},
+                  { WALL, -1  	    , -1	    , n.get(11) , WALL	    , n.get(12) , WALL      , n.get(13) , WALL	    , n.get(14) , WALL		, n.get(15) , WALL      , n.get(16) , WALL},
                   { WALL, n.get(17) , n.get(18) , n.get(19) , n.get(20) , n.get(21) , n.get(22) , n.get(23) , n.get(24) , n.get(25) , n.get(26) , n.get(27) , n.get(28) , n.get(29) , WALL},
                   { WALL, n.get(30) , WALL	    , n.get(31) , WALL      , n.get(32) , WALL	    , n.get(33) , WALL	    , n.get(34) , WALL		, n.get(35) , WALL      , n.get(36) , WALL},
                   { WALL, n.get(37) , n.get(38) , n.get(39) , n.get(40) , n.get(41) , n.get(42) , n.get(43) , n.get(44) , n.get(45) , n.get(46)	, n.get(47) , n.get(48) , n.get(49) , WALL},
